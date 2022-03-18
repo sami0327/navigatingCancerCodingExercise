@@ -1,6 +1,7 @@
 package com.navigatingcancer.codingexercise.controller;
 
 import com.navigatingcancer.codingexercise.model.BasicMathResult;
+import com.navigatingcancer.codingexercise.model.MathOperation;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,6 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(
@@ -37,6 +39,7 @@ public class MathsControllerIT {
         assertNotNull(mathResult);
         assertEquals(mathResult.getParameter1(), param1);
         assertEquals(mathResult.getParameter2(), param2);
+        assertEquals(mathResult.getOperation(), MathOperation.ADDITION);
         assertEquals(4, mathResult.getResult(), "result doesn't match expected 4");
     }
 
@@ -54,6 +57,7 @@ public class MathsControllerIT {
         assertNotNull(mathResult);
         assertEquals(mathResult.getParameter1(), param1);
         assertEquals(mathResult.getParameter2(), param2);
+        assertEquals(mathResult.getOperation(), MathOperation.ADDITION);
         assertEquals(7, mathResult.getResult(), "result doesn't match expected 7");
     }
 }
