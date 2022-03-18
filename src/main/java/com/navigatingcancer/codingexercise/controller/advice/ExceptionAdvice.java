@@ -17,6 +17,7 @@ public class ExceptionAdvice {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler
     public ErrorMessage handleClientError(Exception ex) {
-        return new ErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR.value(), SERVER_ERROR, new Date());
+        return new ErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR.value(), SERVER_ERROR + ": " + ex.getMessage(),
+                new Date());
     }
 }
